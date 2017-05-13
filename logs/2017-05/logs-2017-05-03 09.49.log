@@ -1,0 +1,1 @@
+[ERROR] 2017-05-03 09:40:53.717 [main] XMLValidator - e-props-correct.4: The {type definition} of element 'entertaining' is not validly derived from the {type definition} of the substitutionHead 'tns:paper', or the {substitution group exclusions} property of 'tns:paper' does not allow this derivation.

@@ -1,0 +1,5 @@
+[ERROR] 2017-05-03 10:10:40.683 [main] XMLValidator - cvc-enumeration-valid: Value '' is not facet-valid with respect to enumeration '[space, nature, economics]'. It must be a value from the enumeration.
+[ERROR] 2017-05-03 10:11:28.602 [main] XMLValidator - src-element.3: Element 'pages' has both a 'type' attribute and a 'anonymous type' child. Only one of these is allowed for an element.
+[ERROR] 2017-05-03 10:12:05.784 [main] XMLValidator - src-element.3: Element 'pages' has both a 'type' attribute and a 'anonymous type' child. Only one of these is allowed for an element.
+[ERROR] 2017-05-03 10:13:07.521 [main] XMLValidator - cvc-pattern-valid: Value '' is not facet-valid with respect to pattern '\d{6}' for type '#AnonType_subscribe-indexChars'.
+[ERROR] 2017-05-03 10:14:13.377 [main] XMLValidator - cvc-complex-type.2.4.b: The content of element 'chars' is not complete. One of '{"http://www.example.com/papers":subscribe-index}' is expected.

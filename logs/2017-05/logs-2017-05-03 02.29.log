@@ -1,0 +1,2 @@
+[ERROR] 2017-05-03 02:23:54.771 [main] ErrorHandler - cvc-enumeration-valid: Value '' is not facet-valid with respect to enumeration '[fashion, culinary, home-tips]'. It must be a value from the enumeration.
+[ERROR] 2017-05-03 02:29:37.156 [main] ErrorHandler - cvc-enumeration-valid: Value '' is not facet-valid with respect to enumeration '[fashion, culinary, home-tips]'. It must be a value from the enumeration.

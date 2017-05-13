@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<papers xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.example.com/papers"
+        xsi:schemaLocation = "http://www.example.com/papers input2.xsd">
+   <entertaining type="book" title="flknbg" theme="culinary">
+       <colored>true</colored>
+       <monthly>false</monthly>
+       <chars>
+           <glossy>false</glossy>
+           <pages>100</pages>
+       </chars>
+   </entertaining>
+    <science type="book" title="kjdfnb" theme="nature">
+        <colored>true</colored>
+        <monthly>true</monthly>
+        <chars>
+            <glossy>false</glossy>
+            <pages>30</pages>
+            <subscribe-index>123456</subscribe-index>
+        </chars>
+    </science>
+</papers>

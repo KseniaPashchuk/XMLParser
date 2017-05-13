@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/papers"
+        xmlns:tns="http://www.example.com/papers"
+        elementFormDefault="qualified">
+
+
+    <element name="papers">
+        <complexType>
+            <sequence>
+                <element ref="tns:paper"
+                         minOccurs="2"
+                         maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="paper" type="tns:Paper" abstract="true"/>
+    <element name="entertaining" type="tns:Entertaining" substitutionGroup="tns:paper"/>
+    <element name="science" type="tns:Science"
+             substitutionGroup="tns:paper"/>
+    <complexType name="Paper">
+        <all>
+            <element name="colored" type="boolean"/>
+            <element name="monthly" type="boolean"/>
+            <element name="chars" type="tns:Chars"/>
+        </all>
+        <attribute name="type" use="required">
+            <simpleType>
+                <restriction base="string">
+                    <enumeration value="magazine"/>
+                    <enumeration value="book"/>
+                    <enumeration value="booklet"/>
+                </restriction>
+            </simpleType>
+        </attribute>
+        <attribute name="title" type="string" use="required"/>
+    </complexType>
+    <complexType name="Chars">
+        <all>
+            <element name="glossy" type="boolean"/>
+            <element name="pages">
+                <simpleType>
+                    <restriction base="positiveInteger">
+                        <minInclusive value="1"/>
+                    </restriction>
+                </simpleType>
+            </element>
+            <element name="subscribe-index"  minOccurs="0">
+                <simpleType>
+                    <restriction base="ID">
+                        <pattern value="\d{6}"/>
+                    </restriction>
+                </simpleType>
+            </element>
+        </all>
+    </complexType>
+
+    <complexType name="Entertaining">
+        <complexContent>
+            <extension base="tns:Paper">
+                <attribute name="theme" use="optional" default="fashion">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="fashion"/>
+                            <enumeration value="culinary"/>
+                            <enumeration value="home-tips"/>
+                        </restriction>
+                    </simpleType>
+                </attribute>
+            </extension>
+        </complexContent>
+    </complexType>
+    <complexType name="Science">
+        <complexContent>
+            <extension base="tns:Paper">
+                <attribute name="theme" use="optional" default="nature">
+                    <simpleType>
+                        <restriction base="string">
+                            <enumeration value="space"/>
+                            <enumeration value="nature"/>
+                            <enumeration value="economics"/>
+                        </restriction>
+                    </simpleType>
+                </attribute>
+            </extension>
+        </complexContent>
+    </complexType>
+</schema>
+
+
+
+
