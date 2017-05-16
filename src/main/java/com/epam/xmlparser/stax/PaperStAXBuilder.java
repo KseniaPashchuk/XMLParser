@@ -49,11 +49,11 @@ public class PaperStAXBuilder {
                 int type = reader.next();
                 if (type == XMLStreamConstants.START_ELEMENT) {
                     name = reader.getLocalName();
-                    if (PaperEnum.valueOf(name.toUpperCase()) == PaperEnum.ENTERTAINING) {
+                    if (PaperEnum.getEnum(name) == PaperEnum.ENTERTAINING) {
                         paper = buildEntertaining(reader);
                         papers.add(paper);
                     }
-                    if (PaperEnum.valueOf(name.toUpperCase()) == PaperEnum.SCIENCE) {
+                    if (PaperEnum.getEnum(name) == PaperEnum.SCIENCE) {
                         paper = buildScience(reader);
                         papers.add(paper);
                     }
@@ -76,7 +76,10 @@ public class PaperStAXBuilder {
 
     private Entertaining buildEntertaining(XMLStreamReader reader) throws XMLStreamException {
         Entertaining en = new Entertaining();
-        en.setTheme(EntertainingType.getEnum(reader.getAttributeValue(null, PaperEnum.THEME.getValue())));
+        String theme;
+        if((theme = reader.getAttributeValue(null, PaperEnum.THEME.getValue()))!=null) {
+            en.setTheme(EntertainingType.getEnum(theme));
+        }
         buildPaper(reader, en);
         return en;
 
@@ -84,7 +87,10 @@ public class PaperStAXBuilder {
 
     private Science buildScience(XMLStreamReader reader) throws XMLStreamException {
         Science sc = new Science();
-        sc.setTheme(ScienceType.getEnum(reader.getAttributeValue(null, PaperEnum.THEME.getValue())));
+        String theme;
+        if((theme = reader.getAttributeValue(null, PaperEnum.THEME.getValue()))!=null) {
+            sc.setTheme(ScienceType.getEnum(theme));
+        }
         buildPaper(reader, sc);
         return sc;
     }

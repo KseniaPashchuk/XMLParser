@@ -46,10 +46,8 @@ public class PaperDOMBuilder {
     public void buildPapersSet(String fileName) {
         Document doc;
         try {
-// parsing XML-документа и создание древовидной структуры
             doc = docBuilder.parse(fileName);
             Element root = doc.getDocumentElement();
-// получение списка дочерних элементов
             NodeList entertainingList = root.getElementsByTagName("entertaining");
             for (int i = 0; i < entertainingList.getLength(); i++) {
                 Element entertainingElement = (Element) entertainingList.item(i);
@@ -63,9 +61,9 @@ public class PaperDOMBuilder {
                 papers.add(science);
             }
         } catch (IOException e) {
-            LOGGER.log(Level.ERROR,"File error or I/O error: " + e);
+            LOGGER.log(Level.ERROR, "File error or I/O error: " + e);
         } catch (SAXException e) {
-            LOGGER.log(Level.ERROR,"Parsing failure: " + e);
+            LOGGER.log(Level.ERROR, "Parsing failure: " + e);
         }
     }
 
@@ -73,15 +71,18 @@ public class PaperDOMBuilder {
     private Entertaining buildEntertaining(Element entertainingElement) {
         Entertaining entertaining = new Entertaining();
         buildPaper(entertainingElement, entertaining);
-        entertaining.setTheme(EntertainingType.getEnum(entertainingElement.getAttribute("theme"))); // проверка на null
-
+        String theme;
+        if ((theme = entertainingElement.getAttribute("theme")) != null)
+            entertaining.setTheme(EntertainingType.getEnum(theme));
         return entertaining;
     }
 
     private Science buildScience(Element scienceElement) {
         Science science = new Science();
         buildPaper(scienceElement, science);
-        science.setTheme(ScienceType.getEnum(scienceElement.getAttribute("theme")));//!!!!!!!!!!!!!!!!!!!
+        String theme;
+        if ((theme = scienceElement.getAttribute("theme")) != null)
+            science.setTheme(ScienceType.getEnum(theme));
         return science;
     }
 
@@ -95,21 +96,21 @@ public class PaperDOMBuilder {
 
     private Chars getXMLChars(Element paperElement) {
         Chars chars = new Chars();
+        String index;
         Element charsElement = (Element) paperElement.getElementsByTagName("chars").item(0);
         chars.setGlossy(Boolean.parseBoolean(getElementTextContent(charsElement, "glossy")));
         chars.setPageNumber(Integer.parseInt(getElementTextContent(charsElement, "pages")));
-        if (getElementTextContent(charsElement, "subscribe-index") != null) {
-            chars.setSubscribeIndex(Integer.parseInt(getElementTextContent(charsElement, "subscribe-index")));
+        if ((index = getElementTextContent(charsElement, "subscribe-index")) != null) {
+            chars.setSubscribeIndex(Integer.parseInt(index));
         }
         return chars;
     }
 
-    // получение текстового содержимого тега
     private static String getElementTextContent(Element element, String elementName) {
         NodeList nList = element.getElementsByTagName(elementName);
         Node node = nList.item(0);
         if (node != null) {
-             return node.getTextContent();
+            return node.getTextContent();
         }
         return null;
     }

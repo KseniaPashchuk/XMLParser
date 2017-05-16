@@ -7,6 +7,7 @@ public class Entertaining extends Paper {
     private EntertainingType theme;
 
     public Entertaining() {
+        theme = EntertainingType.FASHION;
     }
 
 

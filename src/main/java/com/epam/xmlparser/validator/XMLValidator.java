@@ -22,7 +22,7 @@ public class XMLValidator {
     public boolean validate(String fileName) {
         SchemaFactory factory = SchemaFactory.newInstance(LANGUAGE);
         File schemaLocation = new File(SCHEMA_NAME);
-        //ErrorHandler2 handler = new ErrorHandler2();
+        //ErrorHandler handler = new ErrorHandler();
         try {
             // создание схемы
             Schema schema = factory.newSchema(schemaLocation);

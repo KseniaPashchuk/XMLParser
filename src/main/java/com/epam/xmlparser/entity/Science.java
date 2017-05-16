@@ -6,6 +6,7 @@ public class Science extends Paper {
     private ScienceType theme;
 
     public Science() {
+        theme = ScienceType.NATURE;
     }
 
     public ScienceType getTheme() {

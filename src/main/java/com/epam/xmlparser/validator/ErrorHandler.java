@@ -6,11 +6,11 @@ import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class ErrorHandler2 extends DefaultHandler {
-    private static final Logger LOGGER = LogManager.getLogger(ErrorHandler2.class);
+public class ErrorHandler extends DefaultHandler {
+    private static final Logger LOGGER = LogManager.getLogger(ErrorHandler.class);
     private boolean isValid = true;
 
-    public ErrorHandler2() {
+    public ErrorHandler() {
     }
 
     public void warning(SAXParseException e) {
